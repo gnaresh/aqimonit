@@ -1,5 +1,5 @@
 # AQIMonit
-The project provides a UI to monitor the Air Quality Index of Cities in India. 
+The project provides a UI to monitor the Air Quality Index of Cities in India. (3 hrs Development & Developer Testing Time + 30min Documentation & Deployment Time)
 
 - City Wise Live Air Quality Index Monitoring
 - AQI Highlighted with different colors based on the level
@@ -17,8 +17,10 @@ The project provides a UI to monitor the Air Quality Index of Cities in India.
 - Recharts for charts
 
 ##Components
-1. AQI Table
-2. Live Chart
+1. AQI Table - 1 hr Development & Developer Testing Time
+2. Live Chart - 1 hr Development & Developer Testing Time
+
+UI Quality/TroubleShooting - 1 hr
 
 ## Available Scripts
 
@@ -44,3 +46,5 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 
+Heroku BuildPack:
+https://buildpack-registry.s3.amazonaws.com/buildpacks/mars/create-react-app.tgz
