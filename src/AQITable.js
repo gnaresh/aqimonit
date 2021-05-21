@@ -69,18 +69,25 @@ class AQITable extends React.Component {
             const message = JSON.parse(evt.data)
             let { dataFromServer } = this.state;
             Object.keys(dataFromServer).forEach(x => dataFromServer[x].changed = false);
-            message.map(obj => {
+            message.forEach(obj => {
                 if (dataFromServer[obj.city]) {
                     if (dataFromServer[obj.city].aqi !== obj.aqi) {
                         if (dataFromServer[obj.city].aqi <= 200 && obj.aqi > 200) { //from good to poor
                             obj.changed = true
+                        } else {
+                            obj.changed = false
                         }
-                        dataFromServer[obj.city]["updated"] = moment().valueOf();
+                        obj["updated"] = moment().valueOf();
                         dataFromServer[obj.city] = obj
                     }
                 } else {
                     dataFromServer[obj.city] = obj
                     dataFromServer[obj.city]["updated"] = moment().valueOf();
+                    if (dataFromServer[obj.city].aqi <= 200 && obj.aqi > 200) { //from good to poor
+                        dataFromServer[obj.city]["changed"] = true
+                    } else {
+                        dataFromServer[obj.city]["changed"] = false
+                    }
                 }
             })
             this.setState({ dataFromServer })
@@ -123,7 +130,7 @@ class AQITable extends React.Component {
                                             {row.aqi.toFixed(2)}
                                         </td>
                                         <td id={`date${r}`}>
-                                            {row["updated"] > moment().subtract(1, 'minute').valueOf() ? moment(row["updated"]).fromNow() : moment(row["updated"]).format("HH:mm a")}
+                                            {(row["updated"] > moment().subtract(1, 'minute').valueOf()) ? moment(row["updated"]).fromNow() : moment(row["updated"]).format("hh:mm a")}
                                         </td>
                                     </tr>
                                 );

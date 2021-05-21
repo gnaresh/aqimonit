@@ -41,7 +41,8 @@ const LiveChart = (props) => {
     return (
         <div>
             <h3>Real Time AQI ({city})</h3>
-            <LineChart width={500} height={400} data={data}>
+            {
+                data.length > 2 ? <LineChart width={500} height={400} data={data}>
                 <XAxis
                     dataKey="updated"
                     tickFormatter={(timestamp) => moment(timestamp).format("HH:mm:ss a")}
@@ -55,7 +56,9 @@ const LiveChart = (props) => {
                 <YAxis />
                 <Tooltip content={<CustomTooltip />} />
                 <Line dataKey="aqi" />
-            </LineChart>
+                </LineChart> :
+                    <span>Gathering data for the live chart...</span>
+            }
         </div>
     );
 };

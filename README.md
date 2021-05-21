@@ -7,7 +7,8 @@ The project provides a UI to monitor the Air Quality Index of Cities in India.
 - Upto 10 points in live chart
 - Look at AQI data of different cities in a single table
 - When AQI of a city goes from good to poor i.e., from <=200 to >200, an indicator is shown
-- Displaying last updated time for each city
+- Displaying last updated time for each city as sec from now else clock time
+- Live chart is displayed only when minimun of 2 data points are available
 
 ## Tech Stack
 - Reactjs
